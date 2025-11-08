@@ -6,7 +6,7 @@ import {
   RunnableSequence,
   RunnablePassthrough,
 } from "@langchain/core/runnables";
-import { formatDocumentsAsString } from "langchain/util/document";
+import { formatDocumentsAsString } from "@langchain/classic/util/document";
 
 import { chat, ChatHandler } from "../utils/chat";
 import dotenv from "dotenv";

@@ -3,9 +3,10 @@ import { ChatOpenAI } from "@langchain/openai";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { createRetriever } from "./retriever";
 import { RunnableSequence } from "@langchain/core/runnables";
-import { formatDocumentsAsString } from "langchain/util/document";
+import { formatDocumentsAsString } from "@langchain/classic/util/document";
 import { ChatHandler, chat } from "../utils/chat";
 import dotenv from "dotenv";
+import { Document } from "@langchain/core/documents";
 
 dotenv.config();
 
@@ -32,6 +33,10 @@ const retrievalChain = RunnableSequence.from([
   (input) => input.question,
   retriever,
   formatDocumentsAsString,
+
+  // Langchain has moved 'formatDocumentsAsString' to classic package in version 1.0, which means it may not be maintained in long term
+  // for real life project, use the following code to convert chunk Documents to string
+  // (docs: Document[]) => docs.map((doc) => doc.pageContent).join("\n\n"),
 ]);
 
 const generationChain = RunnableSequence.from([

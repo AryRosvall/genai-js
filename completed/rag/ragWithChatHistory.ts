@@ -6,7 +6,7 @@ import { ChatOpenAI } from "@langchain/openai";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { createRetriever } from "./retriever";
 import { RunnableSequence } from "@langchain/core/runnables";
-import { formatDocumentsAsString } from "langchain/util/document";
+import { formatDocumentsAsString } from "@langchain/classic/util/document";
 import { ChatHandler, chat } from "../utils/chat";
 import { BaseMessage, AIMessage, HumanMessage } from "@langchain/core/messages";
 
